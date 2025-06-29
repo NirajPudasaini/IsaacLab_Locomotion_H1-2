@@ -1,5 +1,31 @@
-# Template for Isaac Lab Projects
+# H12 Locomotion with IsaacLab Extension
 
+## Project Description
+
+This repository is a standalone extension of IsaacLab, focused on developing and training locomotion policies for the Unitree H12 humanoid robot. 
+
+## To-Do List
+
+### 1. Asset Creation
+- [ ] Design or obtain a USD file for the H12 robot.
+- [ ] Validate the H12 asset in the simulator (visualization, articulation, collision).
+
+### 2. Environment & Code Adaptation
+- [ ] Review H1 robot training code and environment configuration.
+- [ ] Adapt environment configuration files for H12 (e.g., `h12_locomotion_env_cfg.py`, `velocity_env_cfg.py`).
+- [ ] Update or create task definitions for H12 under `tasks/manager_based/h12_locomotion/`.
+- [ ] Adapt agent and MDP logic for H12.
+
+### 3. Training Pipeline
+- [ ] Set up training scripts for H12.
+- [ ] Train a simple walking policy for H12 using RL (PPO using SKRL).
+- [ ] Evaluate and visualize the learned policy.
+
+
+### 4. (Optional) Advanced Features
+- [ ] Add support for rough terrain or additional tasks.
+
+<!-- 
 ## Overview
 
 This project/repository serves as a template for building projects or extensions based on Isaac Lab.
@@ -7,7 +33,7 @@ It allows you to develop in an isolated environment, outside of the core Isaac L
 
 **Key Features:**
 
-- `Isolation` Work outside the core Isaac Lab repository, ensuring that your development efforts remain self-contained.
+- `Isolation` Work outside the core Isaac Lab repository, ensuring that your development efforts remain self-contained.W
 - `Flexibility` This template is set up to allow your code to be run as an extension in Omniverse.
 
 **Keywords:** extension, template, isaaclab
@@ -132,4 +158,4 @@ Some examples of packages that can likely be excluded are:
 "<path-to-isaac-sim>/extscache/omni.graph.*"        // Graph UI tools
 "<path-to-isaac-sim>/extscache/omni.services.*"     // Services tools
 ...
-```
+``` -->
