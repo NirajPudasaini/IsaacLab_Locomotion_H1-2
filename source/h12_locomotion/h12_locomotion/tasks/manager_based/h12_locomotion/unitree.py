@@ -26,7 +26,7 @@ from isaaclab.utils.assets import ISAACLAB_NUCLEUS_DIR
 
 H1_CFG = ArticulationCfg(
     spawn=sim_utils.UsdFileCfg(
-        usd_path=f"{ISAACLAB_NUCLEUS_DIR}/Robots/Unitree/H1/h1_minimal.usd",
+        usd_path=f"/home/nyuair/niraj_projects/niraj_github/IsaacLab_Locomotion_H1-2/robots/h1_full.usd",
         activate_contact_sensors=True,
         rigid_props=sim_utils.RigidBodyPropertiesCfg(
             disable_gravity=False,
@@ -108,7 +108,7 @@ H1_CFG = ArticulationCfg(
 
 
 H1_MINIMAL_CFG = H1_CFG.copy()
-H1_MINIMAL_CFG.spawn.usd_path = f"{ISAACLAB_NUCLEUS_DIR}/Robots/Unitree/H1/h1_minimal.usd"
+H1_MINIMAL_CFG.spawn.usd_path = f"/home/nyuair/niraj_projects/niraj_github/IsaacLab_Locomotion_H1-2/robots/h1_full.usd"
 """Configuration for the Unitree H1 Humanoid robot with fewer collision meshes.
 
 This configuration removes most collision meshes to speed up simulation.
