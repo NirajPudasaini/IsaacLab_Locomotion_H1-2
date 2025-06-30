@@ -9,7 +9,7 @@ from isaaclab.utils import configclass
 
 import isaaclab_tasks.manager_based.locomotion.velocity.mdp as mdp
 
-from velocity_env_cfg import LocomotionVelocityRoughEnvCfg, RewardsCfg
+from .velocity_env_cfg import LocomotionVelocityRoughEnvCfg, RewardsCfg
 
 ##
 # Pre-defined configs
@@ -18,7 +18,7 @@ from velocity_env_cfg import LocomotionVelocityRoughEnvCfg, RewardsCfg
 # import sys
 # sys.path.append("/home/nyuair/niraj_projects/niraj_github/IsaacLab_Locomotion_H1-2/source/h12_locomotion/h12_locomotion/tasks/manager_based/h12_locomotion")
 
-from unitree import H12_MINIMAL_CFG  # isort: skip
+from .unitree import H12_MINIMAL_CFG  # isort: skip
 
 
 @configclass

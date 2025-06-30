@@ -92,7 +92,7 @@ H12_CFG = ArticulationCfg(
             effort_limit=100,
             velocity_limit=100.0,
             stiffness={".*_ankle_pitch.*": 40.0,
-                       ".*_ankle_roll": 40.0},
+                       ".*_ankle_roll.*": 40.0},
             damping={".*_ankle_pitch.*": 2.0,
                      ".*ankle_roll.*" : 2.0 },
         ),
