@@ -8,7 +8,8 @@ from isaaclab.managers import SceneEntityCfg
 from isaaclab.utils import configclass
 
 import isaaclab_tasks.manager_based.locomotion.velocity.mdp as mdp
-from isaaclab_tasks.manager_based.locomotion.velocity.velocity_env_cfg import LocomotionVelocityRoughEnvCfg, RewardsCfg
+
+from velocity_env_cfg import LocomotionVelocityRoughEnvCfg, RewardsCfg
 
 ##
 # Pre-defined configs
@@ -39,7 +40,7 @@ class H12Rewards(RewardsCfg):
         weight=0.25,
         params={
             "command_name": "base_velocity",
-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_link"),
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle.*"), #changed from ankle_link !
             "threshold": 0.4,
         },
     )
@@ -47,27 +48,27 @@ class H12Rewards(RewardsCfg):
         func=mdp.feet_slide,
         weight=-0.25,
         params={
-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_link"),
-            "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_link"),
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle.*"),
+            "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle.*"),
         },
     )
     # Penalize ankle joint limits
     dof_pos_limits = RewTerm(
-        func=mdp.joint_pos_limits, weight=-1.0, params={"asset_cfg": SceneEntityCfg("robot", joint_names=".*_ankle")}
+        func=mdp.joint_pos_limits, weight=-1.0, params={"asset_cfg": SceneEntityCfg("robot", joint_names=".*_ankle.*")}
     )
     # Penalize deviation from default of the joints that are not essential for locomotion
     joint_deviation_hip = RewTerm(
         func=mdp.joint_deviation_l1,
         weight=-0.2,
-        params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_hip_yaw", ".*_hip_roll"])},
+        params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_hip_yaw.*", ".*_hip_roll.*"])},
     )
     joint_deviation_arms = RewTerm(
         func=mdp.joint_deviation_l1,
         weight=-0.2,
-        params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_shoulder_.*", ".*_elbow"])},
+        params={"asset_cfg": SceneEntityCfg("robot", joint_names=[".*_shoulder_.*", ".*_elbow.*"])},
     )
     joint_deviation_torso = RewTerm(
-        func=mdp.joint_deviation_l1, weight=-0.1, params={"asset_cfg": SceneEntityCfg("robot", joint_names="torso")}
+        func=mdp.joint_deviation_l1, weight=-0.1, params={"asset_cfg": SceneEntityCfg("robot", joint_names="torso.*")}
     )
 
 

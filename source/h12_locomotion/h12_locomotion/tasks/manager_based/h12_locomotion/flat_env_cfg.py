@@ -5,11 +5,11 @@
 
 from isaaclab.utils import configclass
 
-from .rough_env_cfg import H1RoughEnvCfg
+from .rough_env_cfg import H12RoughEnvCfg
 
 
 @configclass
-class H1FlatEnvCfg(H1RoughEnvCfg):
+class H12FlatEnvCfg(H12RoughEnvCfg):
     def __post_init__(self):
         # post init of parent
         super().__post_init__()
@@ -26,7 +26,7 @@ class H1FlatEnvCfg(H1RoughEnvCfg):
         self.rewards.feet_air_time.params["threshold"] = 0.6
 
 
-class H1FlatEnvCfg_PLAY(H1FlatEnvCfg):
+class H12FlatEnvCfg_PLAY(H12RoughEnvCfg):
     def __post_init__(self) -> None:
         # post init of parent
         super().__post_init__()
