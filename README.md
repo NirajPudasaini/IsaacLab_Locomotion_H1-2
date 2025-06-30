@@ -13,7 +13,7 @@ This repository is a standalone extension of IsaacLab, focused on developing and
 ### 2. Environment & Code Adaptation
 - [x] Review H1 robot training code and environment configuration.
 - [x] change robot configuration files for H12 (`unitree.py`).
-- [x] Update or create task definitions for H12 under `flat_env_cfg.py`, `rough_env_cfg.py`,`velocity_env_cfg.py`,  .
+- [x] Update or create task definitions for H12 under `flat_env_cfg.py`, `rough_env_cfg.py`,`velocity_env_cfg.py`.
 - [x] Register the task.
 
 ### 3. Train and Evaluate
