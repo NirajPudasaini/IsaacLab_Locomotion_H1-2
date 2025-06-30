@@ -14,14 +14,14 @@ from isaaclab_tasks.manager_based.locomotion.velocity.velocity_env_cfg import Lo
 # Pre-defined configs
 ##
 
-import sys
-sys.path.append("/home/nyuair/niraj_projects/niraj_github/IsaacLab_Locomotion_H1-2/source/h12_locomotion/h12_locomotion/tasks/manager_based/h12_locomotion")
+# import sys
+# sys.path.append("/home/nyuair/niraj_projects/niraj_github/IsaacLab_Locomotion_H1-2/source/h12_locomotion/h12_locomotion/tasks/manager_based/h12_locomotion")
 
-from unitree import H1_MINIMAL_CFG  # isort: skip
+from unitree import H12_MINIMAL_CFG  # isort: skip
 
 
 @configclass
-class H1Rewards(RewardsCfg):
+class H12Rewards(RewardsCfg):
     """Reward terms for the MDP."""
 
     termination_penalty = RewTerm(func=mdp.is_terminated, weight=-200.0)
@@ -72,14 +72,14 @@ class H1Rewards(RewardsCfg):
 
 
 @configclass
-class H1RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
-    rewards: H1Rewards = H1Rewards()
+class H12RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
+    rewards: H12Rewards = H12Rewards()
 
     def __post_init__(self):
         # post init of parent
         super().__post_init__()
         # Scene
-        self.scene.robot = H1_MINIMAL_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
+        self.scene.robot = H12_MINIMAL_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
         if self.scene.height_scanner:
             self.scene.height_scanner.prim_path = "{ENV_REGEX_NS}/Robot/torso_link"
 
@@ -120,7 +120,7 @@ class H1RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
 
 
 @configclass
-class H1RoughEnvCfg_PLAY(H1RoughEnvCfg):
+class H12RoughEnvCfg_PLAY(H12RoughEnvCfg):
     def __post_init__(self):
         # post init of parent
         super().__post_init__()
