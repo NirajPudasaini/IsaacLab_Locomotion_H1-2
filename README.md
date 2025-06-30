@@ -7,23 +7,22 @@ This repository is a standalone extension of IsaacLab, focused on developing and
 ## To-Do List
 
 ### 1. Asset Creation
-- [ ] Design or obtain a USD file for the H12 robot.
-- [ ] Validate the H12 asset in the simulator (visualization, articulation, collision).
+- [x] Design or obtain a USD file for the H12 robot [used create_urdf.py script from isaaclab].
+- [x] Validate the H12 usd in the isaacsim .
 
 ### 2. Environment & Code Adaptation
-- [ ] Review H1 robot training code and environment configuration.
-- [ ] Adapt environment configuration files for H12 (e.g., `h12_locomotion_env_cfg.py`, `velocity_env_cfg.py`).
-- [ ] Update or create task definitions for H12 under `tasks/manager_based/h12_locomotion/`.
-- [ ] Adapt agent and MDP logic for H12.
+- [x] Review H1 robot training code and environment configuration.
+- [x] change robot configuration files for H12 (`unitree.py`).
+- [x] Update or create task definitions for H12 under ``flat_env_cfg.py`, `rough_env_cfg.py`,`velocity_env_cfg.py`,  .
+- [x] Register the task.
 
-### 3. Training Pipeline
-- [ ] Set up training scripts for H12.
-- [ ] Train a simple walking policy for H12 using RL (PPO using SKRL).
-- [ ] Evaluate and visualize the learned policy.
-
+### 3. Train and Evaluate
+- [x] Run the training for flat or rough terrain.
+- [x] Validate and visualize the walking policy using play.
 
 ### 4. (Optional) Advanced Features
-- [ ] Add support for rough terrain or additional tasks.
+- [] Do mujuco sim2sim verification.
+- [] Do sim2real transfer.
 
 <!-- 
 ## Overview
