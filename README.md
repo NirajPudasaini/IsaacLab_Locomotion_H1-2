@@ -8,7 +8,7 @@ This repository is a standalone extension of IsaacLab, focused on developing and
 
 ### 1. Asset Creation
 - [x] Design or obtain a USD file for the H12 robot [used create_urdf.py script from isaaclab].
-- [x] Validate the H12 usd in the isaacsim .
+- [x] Validate the H12 usd in the isaacsim.
 
 ### 2. Environment & Code Adaptation
 - [x] Review H1 robot training code and environment configuration.

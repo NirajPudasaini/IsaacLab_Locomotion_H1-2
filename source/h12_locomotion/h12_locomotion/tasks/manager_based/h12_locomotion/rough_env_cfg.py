@@ -25,19 +25,21 @@ from .unitree import H12_MINIMAL_CFG  # isort: skip
 class H12Rewards(RewardsCfg):
     """Reward terms for the MDP."""
 
-    termination_penalty = RewTerm(func=mdp.is_terminated, weight=-200.0)
+    termination_penalty = RewTerm(func=mdp.is_terminated, weight=-50.0) #was 200
     lin_vel_z_l2 = None
+
+    #tracking was 1 
     track_lin_vel_xy_exp = RewTerm(
         func=mdp.track_lin_vel_xy_yaw_frame_exp,
-        weight=1.0,
+        weight=15.0,
         params={"command_name": "base_velocity", "std": 0.5},
     )
     track_ang_vel_z_exp = RewTerm(
-        func=mdp.track_ang_vel_z_world_exp, weight=1.0, params={"command_name": "base_velocity", "std": 0.5}
+        func=mdp.track_ang_vel_z_world_exp, weight=15.0, params={"command_name": "base_velocity", "std": 0.5}
     )
     feet_air_time = RewTerm(
         func=mdp.feet_air_time_positive_biped,
-        weight=0.25,
+        weight=5, #was 0.25
         params={
             "command_name": "base_velocity",
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle.*"), #changed from ankle_link !
@@ -70,6 +72,11 @@ class H12Rewards(RewardsCfg):
     joint_deviation_torso = RewTerm(
         func=mdp.joint_deviation_l1, weight=-0.1, params={"asset_cfg": SceneEntityCfg("robot", joint_names="torso.*")}
     )
+
+    # #add base height tracking reward 
+    # base_height_l2=RewTerm(func=mdp.base_height_l2,
+    #                        weight = -2.0,
+    #                        params={"target_height":1.05})
 
 
 @configclass
