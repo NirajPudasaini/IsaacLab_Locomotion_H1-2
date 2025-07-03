@@ -19,6 +19,7 @@ This repository is a standalone extension of IsaacLab, focused on developing and
 ### 3. Train and Evaluate
 - [x] Run the training for flat or rough terrain.
 - [x] Validate and visualize the walking policy using play.
+- []  Add gaiting phases for walking.
 
 ### 4. (Optional) Advanced Features
 - [] Do mujuco sim2sim verification.
