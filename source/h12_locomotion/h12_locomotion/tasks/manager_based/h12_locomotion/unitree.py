@@ -30,7 +30,7 @@ base_dir = "/home/nyuair/niraj_projects/niraj_github/IsaacLab_Locomotion_H1-2"
 
 H12_CFG = ArticulationCfg(
     spawn=sim_utils.UsdFileCfg(
-        usd_path = os.path.join(base_dir, "robots", "h1_2_no_hand", "h1_2_no_hand.usd"),
+        usd_path = os.path.join(base_dir, "robots", "h1_2", "h1_2.usd"),
         activate_contact_sensors=True,
         rigid_props=sim_utils.RigidBodyPropertiesCfg(
             disable_gravity=False,
@@ -119,7 +119,7 @@ H12_CFG = ArticulationCfg(
 
 
 H12_MINIMAL_CFG = H12_CFG.copy()
-H12_MINIMAL_CFG.spawn.usd_path = os.path.join(base_dir, "robots", "h1_2_no_hand", "h1_2_no_hand.usd")
+H12_MINIMAL_CFG.spawn.usd_path = os.path.join(base_dir, "robots", "h1_2", "h1_2.usd")
 
 
 """Configuration for the Unitree H1 Humanoid robot with fewer collision meshes.
