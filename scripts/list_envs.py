@@ -26,6 +26,10 @@ simulation_app = app_launcher.app
 
 import gymnasium as gym
 from prettytable import PrettyTable
+import sys
+
+sys.path.append("/home/niraj/isaac_projects/IsaacLab_Locomotion_H1-2/source/h12_locomotion")
+
 
 import h12_locomotion.tasks  # noqa: F401
 

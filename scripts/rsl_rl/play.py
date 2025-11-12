@@ -61,6 +61,14 @@ from isaaclab_rl.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlVecEnvWrapper, expor
 import isaaclab_tasks  # noqa: F401
 from isaaclab_tasks.utils import get_checkpoint_path, parse_env_cfg
 
+
+from isaaclab_tasks.utils.hydra import hydra_task_config
+
+
+import h12_locomotion.tasks.manager_based.h12_locomotion  # This runs your environment registration!
+from h12_locomotion.tasks.manager_based.h12_locomotion.agents import rsl_rl_ppo_cfg  # If needed
+# # If you have equivalents for get_checkpoint_path and hydra
+
 # PLACEHOLDER: Extension template (do not remove this comment)
 
 
@@ -130,6 +138,7 @@ def main():
 
     # export policy to onnx/jit
     export_model_dir = os.path.join(os.path.dirname(resume_path), "exported")
+
     export_policy_as_jit(policy_nn, ppo_runner.obs_normalizer, path=export_model_dir, filename="policy.pt")
     export_policy_as_onnx(
         policy_nn, normalizer=ppo_runner.obs_normalizer, path=export_model_dir, filename="policy.onnx"
@@ -138,6 +147,7 @@ def main():
     dt = env.unwrapped.step_dt
 
     # reset environment
+#    obs, _ = env.get_observations()
     obs, _ = env.get_observations()
     timestep = 0
     # simulate environment

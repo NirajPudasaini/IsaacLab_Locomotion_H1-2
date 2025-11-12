@@ -9,6 +9,7 @@
 
 import argparse
 import sys
+sys.path.insert(0, "/home/niraj/isaac_projects/IsaacLab_Locomotion_H1-2/source/h12_locomotion")
 
 from isaaclab.app import AppLauncher
 
@@ -88,9 +89,14 @@ from isaaclab.utils.io import dump_pickle, dump_yaml
 
 from isaaclab_rl.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlVecEnvWrapper
 
-import isaaclab_tasks  # noqa: F401
-from isaaclab_tasks.utils import get_checkpoint_path
+# import isaaclab_tasks  # noqa: F401
+# from isaaclab_tasks.utils import get_checkpoint_path
 from isaaclab_tasks.utils.hydra import hydra_task_config
+
+
+import h12_locomotion.tasks.manager_based.h12_locomotion  # This runs your environment registration!
+from h12_locomotion.tasks.manager_based.h12_locomotion.agents import rsl_rl_ppo_cfg  # If needed
+# # If you have equivalents for get_checkpoint_path and hydra
 
 # PLACEHOLDER: Extension template (do not remove this comment)
 

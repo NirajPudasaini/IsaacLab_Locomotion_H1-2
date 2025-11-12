@@ -12,6 +12,11 @@ from . import agents
 ##
 
 # #NEED TO EDIT THESE !!
+import sys 
+
+sys.path.append("/home/niraj/isaac_projects/IsaacLab_Locomotion_H1-2")
+
+sys.path.append("/home/niraj/isaac_projects/IsaacLab_Locomotion_H1-2/source/h12_locomotion")
 
 gym.register(
     id="Template-Velocity-Flat-H12-v0",
