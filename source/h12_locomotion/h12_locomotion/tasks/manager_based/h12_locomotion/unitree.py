@@ -64,6 +64,7 @@ H12_CFG_HANDLESS = ArticulationCfg(
         replace_cylinders_with_capsules=True,
 
         asset_path= "/home/niraj/isaac_projects/H12_Bullet_Time/h12_bullet_time/source/h12_bullet_time/h12_bullet_time/assets/robots/gentact_descriptions/robots/h1-2/h1_2_handless.urdf",
+        
        # asset_path= "/home/niraj/isaac_projects/H12_Bullet_Time/h12_bullet_time/source/h12_bullet_time/h12_bullet_time/assets/robots/unitree_model/urdf/h1_2/h1_2_simplified.urdf",
 
         activate_contact_sensors=True,

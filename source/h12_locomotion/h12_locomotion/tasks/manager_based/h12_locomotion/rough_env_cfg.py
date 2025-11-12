@@ -74,9 +74,9 @@ class H12Rewards(RewardsCfg):
     )
 
     # #add base height tracking reward 
-    # base_height_l2=RewTerm(func=mdp.base_height_l2,
-    #                        weight = -2.0,
-    #                        params={"target_height":1.05})
+    base_height_l2=RewTerm(func=mdp.base_height_l2,
+                           weight = -2.0,
+                           params={"target_height":1.05})
 
 
 @configclass
