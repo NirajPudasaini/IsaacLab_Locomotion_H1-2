@@ -25,7 +25,7 @@ from .unitree import H12_MINIMAL_CFG  # isort: skip
 class H12Rewards(RewardsCfg):
     """Reward terms for the MDP."""
 
-    termination_penalty = RewTerm(func=mdp.is_terminated, weight=-50.0) #was 200
+    termination_penalty = RewTerm(func=mdp.is_terminated, weight=-100.0) #was 200
     lin_vel_z_l2 = None
 
     #tracking was 1 
@@ -42,7 +42,7 @@ class H12Rewards(RewardsCfg):
         weight=5, #was 0.25
         params={
             "command_name": "base_velocity",
-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle.*"), #changed from ankle_link !
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_pitch.*"), #changed from ankle_link !
             "threshold": 0.4,
         },
     )
@@ -50,8 +50,8 @@ class H12Rewards(RewardsCfg):
         func=mdp.feet_slide,
         weight=-0.25,
         params={
-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle.*"),
-            "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle.*"),
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_pitch.*"),
+            "asset_cfg": SceneEntityCfg("robot", body_names=".*ankle_pitch.*"),
         },
     )
     # Penalize ankle joint limits
@@ -73,10 +73,15 @@ class H12Rewards(RewardsCfg):
         func=mdp.joint_deviation_l1, weight=-0.1, params={"asset_cfg": SceneEntityCfg("robot", joint_names="torso.*")}
     )
 
-    # #add base height tracking reward 
-    base_height_l2=RewTerm(func=mdp.base_height_l2,
-                           weight = -2.0,
-                           params={"target_height":1.05})
+    flat_orientation_l2 = RewTerm(
+        func=mdp.flat_orientation_l2,
+        weight=-20.0,
+        params={"asset_cfg": SceneEntityCfg("robot")}
+    )
+    # #add base height tracking reward
+    base_height_l2 = RewTerm(func=mdp.base_height_l2,
+                             weight=-20.0,
+                             params={"target_height": 1.05})
 
 
 @configclass
@@ -113,7 +118,7 @@ class H12RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
 
         # Rewards
         self.rewards.undesired_contacts = None
-        self.rewards.flat_orientation_l2.weight = -1.0
+        # self.rewards.flat_orientation_l2.weight = -1.0
         self.rewards.dof_torques_l2.weight = 0.0
         self.rewards.action_rate_l2.weight = -0.005
         self.rewards.dof_acc_l2.weight = -1.25e-7
