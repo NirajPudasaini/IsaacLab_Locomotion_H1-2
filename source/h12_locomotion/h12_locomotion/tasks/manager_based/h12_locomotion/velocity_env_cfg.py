@@ -28,7 +28,8 @@ import isaaclab_tasks.manager_based.locomotion.velocity.mdp as mdp
 ##
 # Pre-defined configs
 ##
-from isaaclab.terrains.config.rough import ROUGH_TERRAINS_CFG  # isort: skip
+from isaaclab.terrains.config.rough import ROUGH_TERRAINS_CFG
+from source.h12_locomotion.h12_locomotion.tasks.manager_based.h12_locomotion.mdp.rewards import feet_gait  # isort: skip
 
 
 ##
@@ -260,7 +261,17 @@ class RewardsCfg:
         weight=-1.0,
         params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*THIGH"), "threshold": 1.0},
     )
-    
+        # -- feet
+    gait = RewTerm(
+        func=feet_gait,
+        weight=5,
+        params={
+            "period": 0.6,
+            "offset": [0.0, 0.5],
+            "threshold": 0.55,
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=".*ankle_pitch.*"),
+        },
+    )
     # -- optional penalties
     # flat_orientation_l2 = RewTerm(func=mdp.flat_orientation_l2, weight=-20.0)
     dof_pos_limits = RewTerm(func=mdp.joint_pos_limits, weight=0.0)
